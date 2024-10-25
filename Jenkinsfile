@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                     // Ejecutar Bandit solo en test.py
-                    def result = sh(script: 'python3 bandit -r test.py -f json -o bandit-report.json', returnStatus: true)
+                    def result = sh(script: 'python3 -m bandit -r test.py -f json -o bandit-report.json', returnStatus: true)
                     if (result != 0) {
                         error 'Bandit found issues in the code'
                     }
